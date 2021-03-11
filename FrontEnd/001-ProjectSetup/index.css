@@ -1,0 +1,9 @@
+/* Element selector  */
+h1 {
+    color: darkblue;
+}
+
+/* Class Selector  */
+.subHead {
+    border: 5px solid darkslateblue;
+}

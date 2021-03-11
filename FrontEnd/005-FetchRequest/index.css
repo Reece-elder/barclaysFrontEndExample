@@ -1,0 +1,19 @@
+/* Setting background colour to light grey to see more easily  */
+body {
+    background-color: lightgrey;
+}
+
+/* Element selector  */
+h1 {
+    color: darkblue;
+}
+
+/* Class Selector  */
+.subHead {
+    border: 5px solid darkslateblue;
+}
+
+/* .idForm {
+    border: 5px solid red;
+} */
+
