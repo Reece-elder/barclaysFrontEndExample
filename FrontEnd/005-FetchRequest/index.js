@@ -271,8 +271,7 @@ let createFuncData = (object) => {
       } else {
         console.log(`All good! ${response.status}`);
       }
-      response
-        .json()
+      response.json()
         .then((data) =>
           console.log(`Request succesful with JSON response ${data}`)
         )
