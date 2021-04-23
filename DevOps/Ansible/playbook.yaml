@@ -1,0 +1,42 @@
+--- 
+- hosts: all
+  become: true
+  tasks: 
+    - name: "Printing hello world to the console"
+      debug:
+        msg: "Hello World"
+
+    - name: "install curl"
+      apt:
+        name: curl
+        state: latest
+        update_cache: true
+
+- hosts: firstVM
+  become: true
+  tasks:
+  - name: 'Install NGINX'
+    apt:
+      name: nginx
+      state: latest
+      update_cache: true
+  - name: 'Start NGINX Service'
+    service:
+      name: nginx
+      state: started
+
+- hosts: all
+  become: true
+  roles:
+  - helloWorld
+
+- hosts: firstVM
+  become: true
+  roles:
+  - curl
+  - wget
+
+- hosts: secondVM
+  become: true
+  roles:
+  - nginx

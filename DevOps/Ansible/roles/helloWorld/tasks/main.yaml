@@ -1,0 +1,3 @@
+- name: "Printing hello world to the console"
+  debug:
+    msg: "Hello World"

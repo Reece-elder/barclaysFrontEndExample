@@ -1,0 +1,73 @@
+pipeline {
+    agent any // What node you're using, just using the VM so any will work
+
+    stages { // Collection of 'stages' in your pipeline
+
+    stage('nameOfStage') { // what is the name of this specific stage
+        steps {
+            stage('helloWorld') {
+                sh 'echo "helloWorld"'
+                }
+            }
+        }
+    }
+}
+
+pipeline {
+    agent any
+
+    environment {
+        test = credentials('testID')
+    }
+
+    stages {
+        stage('Run') {
+            steps {
+                sh "echo $test"
+            }
+        }
+
+        stage('Script') {
+            steps {
+                sh 'pwd'
+                sh 'ls'
+                sh 'chmod +x ./scripts/test.sh'
+                sh './scripts/test.sh'
+            }
+        }
+    }
+}
+
+pipeline {
+    agent any
+
+    environment {
+        test = credentials('testID')
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                sh 'echo "run Build Script'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'echo "run Test Script'
+            }
+        }
+
+        stage('Push') {
+            steps {
+                sh 'echo "run Push Script'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh 'echo "run Deploy Script'
+            }
+        }
+    }
+}
